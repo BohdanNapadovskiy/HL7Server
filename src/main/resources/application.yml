@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+cloud:
+  aws:
+    stack.auto: false
+    region:
+      static: us-west-1
+      auto: false
+    credentials:
+      instanceProfile: false
+      accessKey: AKIA2XHGMJGTFJ24KPGF
+      secretKey: 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
+

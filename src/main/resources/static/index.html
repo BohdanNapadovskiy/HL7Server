@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">Vitals Message Server</h1>
+<div class="tab">
+    <button class="tablinks" onclick="openPage(event, 'Home')">Home</button>
+    <button class="tablinks" onclick="openPage(event, 'History')">History</button>
+</div>
+<div id="Home" class="tabcontent">
+    <h3>Home</h3>
+
+    <form th:attr="action=@{/api/start}" method="post" id="users">
+        <label>Port:</label>
+        <input type="text" name="port" id="Port">
+        <input type="submit" value="Start">
+    </form>
+    <!--        <div id="result"></div>-->
+
+    <!--        <script>-->
+    <!--            if(typeof(EventSource) !== "undefined") {-->
+    <!--                var source = new EventSource("demo_sse.php");-->
+    <!--                source.onmessage = function(event) {-->
+    <!--                    document.getElementById("result").innerHTML += event.data + "<br>";-->
+    <!--                };-->
+    <!--            } else {-->
+    <!--                document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";-->
+    <!--            }-->
+    <!--        </script>        -->
+</div>
+
+<div id="History" class="tabcontent">
+    <h3>History</h3>
+    <!--        <p>Paris is the capital of France.</p>-->
+</div>
+
+<script>
+    function openPage(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+
+</html>
